@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql_db
+    links:
+      - mysql_db:database
+  mysql_db:
+    image: "mysql:latest"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      mysql_DB: job_portal
+      mysql_PASSWORD: Root12345
