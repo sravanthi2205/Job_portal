@@ -6,14 +6,14 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - mysql_db
+      - postgres_db
     links:
-      - mysql_db:database
-  mysql_db:
-    image: "mysql:latest"
+      - postgres_db:database
+  postgres_db:
+    image: "postgres:latest"
     restart: always
     ports:
-      - 3306:3306
+      - 5432:5432
     environment:
-      mysql_DB: job_portal
-      mysql_PASSWORD: Root12345
+      POSTGRES_DB: bank
+      POSTGRES_PASSWORD: postgres
